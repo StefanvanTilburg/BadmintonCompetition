@@ -12,7 +12,6 @@ import java.util.stream.Stream;
  * Representatie van een competitie
  */
 @Entity
-@Table(name = "Competition")
 public class Competition {
 
     @Id
@@ -23,8 +22,8 @@ public class Competition {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "competition_club",
-            joinColumns = @JoinColumn(name = "competitionId", referencedColumnName = "competitionId"),
-            inverseJoinColumns = @JoinColumn(name = "clubId", referencedColumnName = "clubId"))
+            joinColumns = @JoinColumn(name = "competition_Id", referencedColumnName = "competitionId"),
+            inverseJoinColumns = @JoinColumn(name = "club_Id", referencedColumnName = "clubId"))
     private Set<Club> clubs = new HashSet<>();
 
     public Integer getCompetitionId() {

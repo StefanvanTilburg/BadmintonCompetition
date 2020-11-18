@@ -10,7 +10,6 @@ import java.util.Set;
  * Representatie van een competitie
  */
 @Entity
-@Table(name = "Club")
 public class Club {
 
     @Id
@@ -19,7 +18,7 @@ public class Club {
 
     private String clubName;
 
-    @ManyToMany(mappedBy = "clubs")
+    @ManyToMany(mappedBy = "clubs", cascade = CascadeType.ALL)
     private Set<Competition> competitions = new HashSet<>();
 
     public Integer getClubId() {
@@ -36,5 +35,13 @@ public class Club {
 
     public void setClubName(String clubName) {
         this.clubName = clubName;
+    }
+
+    public Set<Competition> getCompetitions() {
+        return competitions;
+    }
+
+    public void setCompetitions(Set<Competition> competitions) {
+        this.competitions = competitions;
     }
 }

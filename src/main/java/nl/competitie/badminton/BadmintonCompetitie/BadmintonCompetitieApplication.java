@@ -15,11 +15,4 @@ public class BadmintonCompetitieApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BadmintonCompetitieApplication.class, args);
 	}
-
-	@Override
-	public void run(String[] args) {
-		// Create a couple of Competition and Club
-		competitionRepository.save(new Competition("Competitie 1", new Club("Club A"), new Club("Club B")));
-	}
-
 }
