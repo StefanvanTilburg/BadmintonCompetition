@@ -17,5 +17,21 @@ public class Competition {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer competitionId;
 
+    private String competitionName;
 
+    public Integer getCompetitionId() {
+        return competitionId;
+    }
+
+    public void setCompetitionId(Integer competitionId) {
+        this.competitionId = competitionId;
+    }
+
+    public String getCompetitionName() {
+        return competitionName;
+    }
+
+    public void setCompetitionName(String competitionName) {
+        this.competitionName = competitionName;
+    }
 }

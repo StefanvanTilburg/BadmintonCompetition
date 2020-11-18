@@ -7,6 +7,15 @@
 </head>
 <body>
     <h1>Competities</h1>
-    <p>Hier komt informatie over competities...</p>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Competitie naam</th>
+        </tr>
+        <tr th:each="competition: ${allCompetitions}">
+            <td th:text="${competition.competitionId}" />
+            <td th:text="${competition.competitionName}" />
+        </tr>
+    </table>
 </body>
 </html>
