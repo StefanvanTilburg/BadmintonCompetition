@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Club weergave</title>
+</head>
+<body>
+<h1>Clubs</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Club naam</th>
+    </tr>
+    <tr th:each="club: ${allClubs}">
+        <td th:text="${club.clubId}" />
+        <td th:text="${club.clubName}" />
+    </tr>
+</table>
+
+<h1>Voeg een club toe</h1>
+<form th:action="@{/club/add}" th:object="${club}" method="post">
+    <p>Name: <input type="text" th:field="*{clubName}" /></p>
+    <p><input type="submit" value="Submit" /></p>
+</form>
+
+<a th:href="@{/competition}">Ga naar competitie overzicht</a>
+</body>
+</html>

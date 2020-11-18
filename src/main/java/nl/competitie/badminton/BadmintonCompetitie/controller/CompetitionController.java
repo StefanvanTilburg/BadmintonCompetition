@@ -21,7 +21,7 @@ public class CompetitionController {
     @Autowired
     CompetitionRepository competitionRepository;
 
-    @GetMapping({"/", "/Competition"})
+    @GetMapping({"/", "/competition"})
     protected String showCompetition(Model model) {
         model.addAttribute("allCompetitions", competitionRepository.findAll());
         return "competitionOverview";
@@ -40,7 +40,7 @@ public class CompetitionController {
             return "competitionForm";
         } else {
             competitionRepository.save(competition);
-            return "redirect:/Competition";
+            return "redirect:/competition";
         }
     }
 }
