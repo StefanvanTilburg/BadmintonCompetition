@@ -1,9 +1,10 @@
 package nl.competitie.badminton.BadmintonCompetitie.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author Stefan van Tilburg <s.g.van.tilburg@st.hanze.nl>
@@ -11,13 +12,20 @@ import javax.persistence.Id;
  * Representatie van een competitie
  */
 @Entity
+@Table(name = "Competition")
 public class Competition {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer competitionId;
 
     private String competitionName;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "competition_club",
+            joinColumns = @JoinColumn(name = "competitionId", referencedColumnName = "competitionId"),
+            inverseJoinColumns = @JoinColumn(name = "clubId", referencedColumnName = "clubId"))
+    private Set<Club> clubs = new HashSet<>();
 
     public Integer getCompetitionId() {
         return competitionId;
