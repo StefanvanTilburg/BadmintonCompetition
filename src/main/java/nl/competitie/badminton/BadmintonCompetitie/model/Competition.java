@@ -41,4 +41,17 @@ public class Competition {
     public void setCompetitionName(String competitionName) {
         this.competitionName = competitionName;
     }
+
+    public Set<Club> getClubs() {
+        return clubs;
+    }
+
+    public void setClubs(Set<Club> clubs) {
+        this.clubs = clubs;
+    }
+
+    // TODO Create view for this function
+    public void addClub(Club club) {
+        this.clubs.add(club);
+    }
 }

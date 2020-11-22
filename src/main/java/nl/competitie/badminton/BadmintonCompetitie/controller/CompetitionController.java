@@ -8,7 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.Optional;
 
 /**
  * @author Stefan van Tilburg <s.g.van.tilburg@st.hanze.nl>
@@ -31,6 +34,16 @@ public class CompetitionController {
     protected String showCompetitionForm(Model model) {
         model.addAttribute("competition", new Competition());
         return "competitionForm";
+    }
+
+    @GetMapping("/competition/{competitionName}")
+    protected String showCompetitionDetails(Model model, @PathVariable("competitionName") String competitionName) {
+        Optional<Competition> optionalCompetition = competitionRepository.findByCompetitionName(competitionName);
+        if (optionalCompetition.isEmpty()) {
+            return "redirect:/competition";
+        }
+        model.addAttribute("competition", optionalCompetition.get());
+        return "competitionDetail";
     }
 
     @PostMapping("/competition/add")

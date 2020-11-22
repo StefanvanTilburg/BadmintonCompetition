@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${competition.competitionName} + ' detail'">Competitie detials</title>
+</head>
+<body>
+    <h1>Competitie details van <span th:text="${competition.competitionName}" /></h1>
+    <table>
+        <tr>
+            <th>Club naam</th>
+        </tr>
+        <tr th:each="club: ${competition.clubs}">
+            <td th:text="${club.clubName}"/>
+        </tr>
+    </table>
+</body>
+</html>
