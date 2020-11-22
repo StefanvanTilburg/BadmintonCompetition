@@ -1,9 +1,7 @@
 package nl.competitie.badminton.BadmintonCompetitie.controller;
 
 import nl.competitie.badminton.BadmintonCompetitie.model.Club;
-import nl.competitie.badminton.BadmintonCompetitie.model.Competition;
 import nl.competitie.badminton.BadmintonCompetitie.repository.ClubRepository;
-import nl.competitie.badminton.BadmintonCompetitie.repository.CompetitionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,9 +9,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * @author Stefan van Tilburg <s.g.van.tilburg@st.hanze.nl>

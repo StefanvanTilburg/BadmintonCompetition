@@ -12,15 +12,18 @@
             <th>ID</th>
             <th>Competitie naam</th>
             <th>Competitie link</th>
+            <th>Club hash</th>
         </tr>
         <tr th:each="competition: ${allCompetitions}">
             <td th:text="${competition.competitionId}" />
             <td th:text="${competition.competitionName}" />
             <td><a th:href="@{/competition/{competitionName}
             (competitionName=${competition.competitionName})}" th:text="${competition.competitionName}"/></td>
+            <td th:text="${competition.clubs}" />
         </tr>
     </table>
 
+    <a th:href="@{/club}">Club toevoegen</a>
     <a th:href="@{/competition/add}">Competitie toevoegen</a>
 </body>
 </html>

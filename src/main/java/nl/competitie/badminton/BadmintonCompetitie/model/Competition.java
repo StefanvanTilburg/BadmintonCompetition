@@ -14,6 +14,8 @@ import java.util.stream.Stream;
 @Entity
 public class Competition {
 
+    public static final String DEFAULT_COMPETITION = "DEFAULT COMPETITION";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer competitionId;
@@ -25,6 +27,14 @@ public class Competition {
             joinColumns = @JoinColumn(name = "competition_Id", referencedColumnName = "competitionId"),
             inverseJoinColumns = @JoinColumn(name = "club_Id", referencedColumnName = "clubId"))
     private Set<Club> clubs = new HashSet<>();
+
+    public Competition() {
+        this(DEFAULT_COMPETITION);
+    }
+
+    public Competition(String competitionName) {
+        this.competitionName = competitionName;
+    }
 
     public Integer getCompetitionId() {
         return competitionId;
@@ -53,5 +63,11 @@ public class Competition {
     // TODO Create view for this function
     public void addClub(Club club) {
         this.clubs.add(club);
+        //club.getCompetitions().add(this);
+    }
+
+    public void removeClub(Club club) {
+        this.clubs.remove(club);
+        //club.getCompetitions().remove(club);
     }
 }

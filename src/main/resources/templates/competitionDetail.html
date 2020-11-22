@@ -9,11 +9,14 @@
     <h1>Competitie details van <span th:text="${competition.competitionName}" /></h1>
     <table>
         <tr>
+            <th>Club id</th>
             <th>Club naam</th>
         </tr>
         <tr th:each="club: ${competition.clubs}">
-            <td th:text="${club.clubName}"/>
+            <td th:text="${club.clubId}" />
+            <td th:text="${club.clubName}" />
         </tr>
     </table>
+    <a th:href="@{/competition}">Terug naar Overview</a>
 </body>
 </html>

@@ -12,6 +12,8 @@ import java.util.Set;
 @Entity
 public class Club {
 
+    public static final String DEFAULT_CLUB = "DEFAULT CLUB";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer clubId;
@@ -20,6 +22,14 @@ public class Club {
 
     @ManyToMany(mappedBy = "clubs", cascade = CascadeType.ALL)
     private Set<Competition> competitions = new HashSet<>();
+
+    public Club() {
+        this(DEFAULT_CLUB);
+    }
+
+    public Club(String clubName) {
+        this.clubName = clubName;
+    }
 
     public Integer getClubId() {
         return clubId;
