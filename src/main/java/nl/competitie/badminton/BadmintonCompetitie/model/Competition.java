@@ -10,6 +10,9 @@ import java.util.stream.Stream;
  * @author Stefan van Tilburg <s.g.van.tilburg@st.hanze.nl>
  *
  * Representatie van een competitie
+ *
+ * TODO : - The CascadeType.All removes all competitions when I remove 1 competition. Because all clubs get deleted,
+ *          it cascades back I presumme. Look up possibilities.
  */
 @Entity
 public class Competition {

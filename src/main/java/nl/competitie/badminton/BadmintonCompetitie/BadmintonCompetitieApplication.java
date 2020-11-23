@@ -11,12 +11,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author Stefan van Tilburg
  *
- * Info on CommandLineRunner. Using it for now to fill database with Many-To-Many relationship values. Trying to figure
- * out how to make it work with HTML > POST method.
+ * Info on CommandLineRunner. Using it for now to fill database with Many-To-Many relationship values.
  *
- * // TODO : Figure out POST form with Many-To-Many relationship in HTML view
- * // TODO : Remove CommandLineRunner implementation
- * // TODO : Is a default constructor commen practise in Spring-MVC modelling?
+ * // TODO : Remove CommandLineRunner implementation (edit: leave it for now, populates DB with usefull values)
  *
  * Source CommandLineRunner : https://www.youtube.com/watch?v=-q9rp2pzvGU&ab_channel=JavaGuides
  */

@@ -11,12 +11,10 @@
     <tr>
         <th>ID</th>
         <th>Club naam</th>
-        <th>Competitie hash</th>
     </tr>
     <tr th:each="club: ${allClubs}">
         <td th:text="${club.clubId}" />
         <td th:text="${club.clubName}" />
-        <td th:text="${club.competitions}" />
     </tr>
 </table>
 

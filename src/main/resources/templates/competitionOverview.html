@@ -10,25 +10,23 @@
         <tr>
             <th>ID</th>
             <th>Competitie naam</th>
-            <th>Competitie link</th>
-            <th>Club hash</th>
+            <th>Voeg Club toe aan competitie</th>
+            <th>Verwijder competitie</th>
         </tr>
         <tr th:each="competition: ${allCompetitions}">
             <td th:text="${competition.competitionId}" />
-            <td th:text="${competition.competitionName}" />
             <td><a th:href="@{/competition/{competitionName}
             (competitionName=${competition.competitionName})}" th:text="${competition.competitionName}"/></td>
             <td><a th:href="@{/addCompetitionClub/{competitionId}(competitionId=${competition.competitionId})}"/>
-                Voeg Club toe</td>
+                Voeg Club toe aan competitie</td>
             <td><a th:href="@{/delete/{competitionId}(competitionId=${competition.competitionId})}"/>
-                Verwijder Club</td>
-            <td th:text="${competition.clubs}" />
+                Verwijder</td>
         </tr>
     </table>
 
     <a sec:authorize="hasRole('ADMIN')" th:href="@{/user/new}">Gebruiker toevoegen</a>
-    <a th:href="@{/club}">Club toevoegen</a>
-    <a th:href="@{/competition/add}">Competitie toevoegen</a>
+    <a th:href="@{/club}">Club toevoegen in applicatie</a>
+    <a th:href="@{/competition/add}">Competitie toevoegen in applicatie</a>
     <a th:href="@{/logout}">Uitloggen</a>
 </body>
 </html>
