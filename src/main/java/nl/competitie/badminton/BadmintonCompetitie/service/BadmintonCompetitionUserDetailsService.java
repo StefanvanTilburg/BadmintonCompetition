@@ -16,6 +16,8 @@ public class BadmintonCompetitionUserDetailsService implements UserDetailsServic
     @Autowired
     BadmintonCompetitionUserRepository badmintonCompetitionUserRepository;
 
+
+
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         return badmintonCompetitionUserRepository.findByUsername(s).orElseThrow(
