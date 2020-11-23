@@ -70,4 +70,13 @@ public class Competition {
         this.clubs.remove(club);
         //club.getCompetitions().remove(club);
     }
+
+    public boolean hasClub(Club club) {
+        for (Club competitionClub: getClubs()) {
+            if (competitionClub.getClubId() == club.getClubId()) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

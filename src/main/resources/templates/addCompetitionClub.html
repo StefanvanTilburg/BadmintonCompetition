@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Voeg club aan competitie toe</title>
+</head>
+<body>
+<h1>Voeg club aan competitie toe</h1>
+<form th:action="@{/competition/{competitionId}/clubs(competitionId=${competition.get().competitionId})}"
+      method="get" enctype="multipart/form-data" >
+    <div class="panel-heading">Competitie info</div>
+        Competitie naam: <b th:text="${competition.get().competitionName}" />
+        Clubs:
+        <span th:each="club : ${competition.get().clubs}">
+            <br/>&nbsp;&nbsp;<span th:text="${club.clubName}" />
+        </span>
+        <br/>
+    </div>
+    <div>
+        <select name="clubId">
+            <option th:each="club : ${clubs}"
+                    th:value="${club.clubId}"
+                    th:text="${club.clubName}">Club</option>
+        </select>
+    </div>
+    <input type="submit" value="Voeg club toe"/>
+</form>
+</body>
+</html>

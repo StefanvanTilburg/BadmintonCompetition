@@ -18,6 +18,10 @@
             <td th:text="${competition.competitionName}" />
             <td><a th:href="@{/competition/{competitionName}
             (competitionName=${competition.competitionName})}" th:text="${competition.competitionName}"/></td>
+            <td><a th:href="@{/addCompetitionClub/{competitionId}(competitionId=${competition.competitionId})}"/>
+                Voeg Club toe</td>
+            <td><a th:href="@{/delete/{competitionId}(competitionId=${competition.competitionId})}"/>
+                Verwijder Club</td>
             <td th:text="${competition.clubs}" />
         </tr>
     </table>
