@@ -3,6 +3,7 @@ package nl.competitie.badminton.BadmintonCompetitie.controller;
 import nl.competitie.badminton.BadmintonCompetitie.model.BadmintonCompetitionUser;
 import nl.competitie.badminton.BadmintonCompetitie.repository.BadmintonCompetitionUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,12 +25,14 @@ public class BadmintonCompetitionUserController {
     BadmintonCompetitionUserRepository badmintonCompetitionUserRepository;
 
     @GetMapping("/user/new")
+    @Secured("ROLE_ADMIN")
     protected String showNewUserForm(Model model) {
         model.addAttribute("user", new BadmintonCompetitionUser());
         return "userForm";
     }
 
     @PostMapping("/user/new")
+    @Secured("ROLE_ADMIN")
     protected String saveOrUpdateUser(@ModelAttribute("user")BadmintonCompetitionUser user, BindingResult result) {
         if (result.hasErrors()) {
             return "userForm";

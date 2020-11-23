@@ -25,7 +25,7 @@ public class BadmintonCompetitionSecurityConfiguration extends WebSecurityConfig
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("admin")
                 .password(passwordEncoder().encode("admin"))
-                .roles("USER");
+                .roles("USER", "ADMIN");
         auth.authenticationProvider(authenticationProvider());
     }
 

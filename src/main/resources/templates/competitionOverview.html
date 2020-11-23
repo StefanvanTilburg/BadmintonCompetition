@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Competitie weergave</title>
@@ -23,7 +22,7 @@
         </tr>
     </table>
 
-    <a th:href="@{/user/new}">Gebruiker toevoegen</a>
+    <a sec:authorize="hasRole('ADMIN')" th:href="@{/user/new}">Gebruiker toevoegen</a>
     <a th:href="@{/club}">Club toevoegen</a>
     <a th:href="@{/competition/add}">Competitie toevoegen</a>
     <a th:href="@{/logout}">Uitloggen</a>
