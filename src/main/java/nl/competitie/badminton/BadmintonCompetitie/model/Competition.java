@@ -25,7 +25,7 @@ public class Competition {
 
     private String competitionName;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "competition_club",
             joinColumns = @JoinColumn(name = "competition_Id", referencedColumnName = "competitionId"),
             inverseJoinColumns = @JoinColumn(name = "club_Id", referencedColumnName = "clubId"))

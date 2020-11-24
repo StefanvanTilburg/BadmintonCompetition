@@ -20,7 +20,7 @@ public class Club {
 
     private String clubName;
 
-    @ManyToMany(mappedBy = "clubs", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "clubs")
     private Set<Competition> competitions = new HashSet<>();
 
     public Club() {
