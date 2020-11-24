@@ -10,15 +10,25 @@
         <tr>
             <th>ID</th>
             <th>Competitie naam</th>
+            <th>Clubs</th>
             <th>Voeg Club toe aan competitie</th>
             <th>Verwijder competitie</th>
         </tr>
         <tr th:each="competition: ${allCompetitions}">
             <td th:text="${competition.competitionId}" />
+
             <td><a th:href="@{/competition/{competitionName}
             (competitionName=${competition.competitionName})}" th:text="${competition.competitionName}"/></td>
+
+            <td>
+                <span th:each="club,iterStat : ${competition.clubs}">
+                    <span th:text="${club.clubName}"/><th:block th:if="${!iterStat.last}">,</th:block>
+                </span>
+            </td>
+
             <td><a th:href="@{/addCompetitionClub/{competitionId}(competitionId=${competition.competitionId})}"/>
                 Voeg Club toe aan competitie</td>
+
             <td><a th:href="@{/delete/{competitionId}(competitionId=${competition.competitionId})}"/>
                 Verwijder</td>
         </tr>
