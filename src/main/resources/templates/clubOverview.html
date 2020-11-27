@@ -4,26 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Club weergave</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css} "/>
 </head>
 <body>
-<h1>Clubs</h1>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Club naam</th>
-    </tr>
-    <tr th:each="club: ${allClubs}">
-        <td th:text="${club.clubId}" />
-        <td th:text="${club.clubName}" />
-    </tr>
-</table>
+    <div th:replace="fragments/navigation.html :: topNavigation(~{ :: .myLocation})">
+        <div class="myLocation">Club weergave</div>
+    </div>
+    <h1>Clubs</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Club naam</th>
+        </tr>
+        <tr th:each="club: ${allClubs}">
+            <td th:text="${club.clubId}" />
+            <td th:text="${club.clubName}" />
+        </tr>
+    </table>
 
-<h1>Voeg een club toe</h1>
-<form th:action="@{/club/add}" th:object="${club}" method="post">
-    <p>Name: <input type="text" th:field="*{clubName}" /></p>
-    <p><input type="submit" value="Submit" /></p>
-</form>
-
-<a th:href="@{/competition}">Ga naar competitie overzicht</a>
+    <h1>Voeg een club toe</h1>
+    <form th:action="@{/club/add}" th:object="${club}" method="post">
+        <p>Name: <input type="text" th:field="*{clubName}" /></p>
+        <p><input type="submit" value="Submit" /></p>
+    </form>
 </body>
 </html>

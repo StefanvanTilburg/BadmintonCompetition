@@ -4,8 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${competition.competitionName} + ' detail'">Competitie detials</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css} "/>
 </head>
 <body>
+    <div th:replace="fragments/navigation.html :: topNavigation(~{ :: .myLocation})">
+        <div class="myLocation">Competitie details</div>
+    </div>
     <h1>Competitie details van <span th:text="${competition.competitionName}" /></h1>
     <table>
         <tr>
@@ -17,6 +21,5 @@
             <td th:text="${club.clubName}" />
         </tr>
     </table>
-    <a th:href="@{/competition}">Terug naar Overview</a>
 </body>
 </html>

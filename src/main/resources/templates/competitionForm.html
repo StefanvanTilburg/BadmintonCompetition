@@ -4,15 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Creëer competities</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css} "/>
 </head>
 <body>
-<h1>Creëer een nieuwe competitie</h1>
-<form th:action="@{/competition/add}" th:object="${competition}" method="post">
-    <p>Competitie naam : <input type="text" th:field="*{competitionName}" /></p>
-    <p><input type="submit" value="Submit" /></p>
-</form>
-
-<a th:href="@{/competition}">Terug naar Overview</a>
-
+    <div th:replace="fragments/navigation.html :: topNavigation(~{ :: .myLocation})">
+        <div class="myLocation">Creëer competities</div>
+    </div>
+    <h1>Creëer een nieuwe competitie</h1>
+    <form th:action="@{/competition/add}" th:object="${competition}" method="post">
+        <p>Competitie naam : <input type="text" th:field="*{competitionName}" /></p>
+        <p><input type="submit" value="Submit" /></p>
+    </form>
 </body>
 </html>

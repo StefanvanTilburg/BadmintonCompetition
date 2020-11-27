@@ -6,6 +6,9 @@
     <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css} "/>
 </head>
 <body>
+    <div th:replace="fragments/navigation.html :: topNavigation(~{ :: .myLocation})">
+        <div class="myLocation">Home</div>
+    </div>
     <h1>Competities</h1>
     <table>
         <tr>
@@ -34,11 +37,6 @@
                 Verwijder</td>
         </tr>
     </table>
-
-    <a sec:authorize="hasRole('ADMIN')" th:href="@{/user/new}">Gebruiker toevoegen</a>
-    <a th:href="@{/club}">Club toevoegen in applicatie</a>
-    <a th:href="@{/competition/add}">Competitie toevoegen in applicatie</a>
-    <a th:href="@{/logout}">Uitloggen</a>
 
     <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
     <script th:src="@{/webjars/popper.js/2.5.2/umd/popper.min.js}"></script>

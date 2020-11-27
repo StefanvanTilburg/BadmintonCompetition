@@ -2,24 +2,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Voeg club aan competitie toe</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css} "/>
 </head>
 <body>
-<h1>Voeg club aan competitie toe</h1>
-<form th:action="@{/competition/{competitionId}/clubs(competitionId=${competition.get().competitionId})}"
-      method="get" enctype="multipart/form-data" >
-    <div class="panel-heading">Competitie info</div>
-        <h1>Competitie naam: <b th:text="${competition.get().competitionName}" /></h1>
-        <h2>Clubs:</h2>
-        <p th:each="club : ${competition.get().clubs}"><span th:text="${club.clubName}" /></p>
+    <div th:replace="fragments/navigation.html :: topNavigation(~{ :: .myLocation})">
+        <div class="myLocation">Club toevoegen</div>
     </div>
-    <div>
-        <select name="clubId">
-            <option th:each="club : ${clubs}"
-                    th:value="${club.clubId}"
-                    th:text="${club.clubName}">Club</option>
-        </select>
-    </div>
-    <input type="submit" value="Voeg club toe"/>
-</form>
+    <h1>Voeg club aan competitie toe</h1>
+    <form th:action="@{/competition/{competitionId}/clubs(competitionId=${competition.get().competitionId})}"
+          method="get" enctype="multipart/form-data" >
+        <div class="panel-heading">Competitie info</div>
+            <h1>Competitie naam: <b th:text="${competition.get().competitionName}" /></h1>
+            <h2>Clubs:</h2>
+            <p th:each="club : ${competition.get().clubs}"><span th:text="${club.clubName}" /></p>
+        </div>
+        <div>
+            <select name="clubId">
+                <option th:each="club : ${clubs}"
+                        th:value="${club.clubId}"
+                        th:text="${club.clubName}">Club</option>
+            </select>
+        </div>
+        <input type="submit" value="Voeg club toe"/>
+    </form>
 </body>
 </html>

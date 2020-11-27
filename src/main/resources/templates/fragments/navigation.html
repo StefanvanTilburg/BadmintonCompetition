@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>This title will not be used</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css} "/>
+</head>
+<body>
+    <div th:fragment="topNavigation(currenlocation)" class="navcontainer">
+        <div class="nav-item navtitle">Badminton Competition Application</div>
+        <div class="nav-item navlocation" th:insert="${currenlocation}">Location... this html is not going to be seen</div>
+        <div class="nav-item"><a th:href="@{/competition}">Home</a></div>
+        <div sec:authorize="hasRole('ADMIN')" class="nav-item">
+            <a sec:authorize="hasRole('ADMIN')" th:href="@{/user/new}">Gebruiker toevoegen</a>
+        </div>
+        <div class="nav-item"><a th:href="@{/competition/add}">Competitie toevoegen in applicatie</a></div>
+        <div class="nav-item"><a th:href="@{/club}">Club toevoegen in applicatie</a></div>
+        <div clase="nav-item"><a th:href="@{/logout}">Uitloggen</a></div>
+    </div>
+</body>
