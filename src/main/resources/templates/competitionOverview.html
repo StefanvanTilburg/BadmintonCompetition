@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Competitie weergave</title>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css} "/>
 </head>
 <body>
     <h1>Competities</h1>
@@ -38,5 +39,9 @@
     <a th:href="@{/club}">Club toevoegen in applicatie</a>
     <a th:href="@{/competition/add}">Competitie toevoegen in applicatie</a>
     <a th:href="@{/logout}">Uitloggen</a>
+
+    <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/2.5.2/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.5.2/js/bootstrap.min.js}"></script>
 </body>
 </html>
