@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/meta.html :: metaInfo"/>
+    <title>Voeg team aan competitie toe</title>
+</head>
+<body>
+    <div th:replace="fragments/navigation.html :: topNavigation(~{ :: .myLocation})">
+        <div class="myLocation">Team toevoegen</div>
+    </div>
+    <h1>Voeg team aan competitie toe</h1>
+    <form th:action="@{/competition/{competitionId}/teams(competitionId=${competition.get().competitionId})}"
+          method="get" enctype="multipart/form-data" >
+        <div class="panel-heading">Competitie info</div>
+            <h1>Competitie naam: <b th:text="${competition.get().competitionName}" /></h1>
+            <h2>Teams:</h2>
+            <p th:each="team : ${competition.get().teams}"><span th:text="${team.teamName}" /></p>
+        </div>
+        <div>
+            <select name="teamId">
+                <option th:each="team : ${teams}"
+                        th:value="${team.teamId}"
+                        th:text="${team.teamName}">Team</option>
+            </select>
+        </div>
+        <input type="submit" value="Voeg team toe"/>
+    </form>
+</body>
+</html>

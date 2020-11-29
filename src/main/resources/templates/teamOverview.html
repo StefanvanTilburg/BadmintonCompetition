@@ -3,22 +3,28 @@
 <html lang="en">
 <head>
     <div th:replace="fragments/meta.html :: metaInfo"/>
-    <title th:text="${competition.competitionName} + ' detail'">Competitie detials</title>
+    <title>Team weergave</title>
 </head>
 <body>
     <div th:replace="fragments/navigation.html :: topNavigation(~{ :: .myLocation})">
-        <div class="myLocation">Competitie details</div>
+        <div class="myLocation">Team weergave</div>
     </div>
-    <h1>Competitie details van <span th:text="${competition.competitionName}" /></h1>
+    <h1>Teams</h1>
     <table>
         <tr>
-            <th>Team id</th>
+            <th>ID</th>
             <th>Team naam</th>
         </tr>
-        <tr th:each="team: ${competition.teams}">
+        <tr th:each="team: ${allTeams}">
             <td th:text="${team.teamId}" />
             <td th:text="${team.teamName}" />
         </tr>
     </table>
+
+    <h1>Voeg een team toe</h1>
+    <form th:action="@{/team/add}" th:object="${team}" method="post">
+        <p>Name: <input type="text" th:field="*{teamName}" /></p>
+        <p><input type="submit" value="Submit" /></p>
+    </form>
 </body>
 </html>

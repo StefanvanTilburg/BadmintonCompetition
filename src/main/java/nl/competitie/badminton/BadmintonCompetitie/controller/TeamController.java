@@ -1,7 +1,7 @@
 package nl.competitie.badminton.BadmintonCompetitie.controller;
 
-import nl.competitie.badminton.BadmintonCompetitie.model.Club;
-import nl.competitie.badminton.BadmintonCompetitie.repository.ClubRepository;
+import nl.competitie.badminton.BadmintonCompetitie.model.Team;
+import nl.competitie.badminton.BadmintonCompetitie.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,23 +16,23 @@ import org.springframework.web.bind.annotation.PostMapping;
  * Stuurt de views voor een club aan
  */
 @Controller
-public class ClubController {
+public class TeamController {
 
     @Autowired
-    ClubRepository clubRepository;
+    TeamRepository teamRepository;
 
-    @GetMapping("/club")
-    protected String showClubs(Model model) {
-        model.addAttribute("allClubs", clubRepository.findAll());
-        model.addAttribute("club", new Club());
-        return "clubOverview";
+    @GetMapping("/team")
+    protected String showTeams(Model model) {
+        model.addAttribute("allTeams", teamRepository.findAll());
+        model.addAttribute("team", new Team());
+        return "teamOverview";
     }
 
-    @PostMapping("/club/add")
-    protected String saveOrUpdateClub(@ModelAttribute("club") Club club, BindingResult result) {
+    @PostMapping("/team/add")
+    protected String saveOrUpdateTeam(@ModelAttribute("club") Team team, BindingResult result) {
         if (!result.hasErrors()) {
-            clubRepository.save(club);
+            teamRepository.save(team);
         }
-        return "redirect:/club";
+        return "redirect:/team";
     }
 }

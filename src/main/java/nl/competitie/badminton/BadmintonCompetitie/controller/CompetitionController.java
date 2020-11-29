@@ -1,8 +1,8 @@
 package nl.competitie.badminton.BadmintonCompetitie.controller;
 
-import nl.competitie.badminton.BadmintonCompetitie.model.Club;
+import nl.competitie.badminton.BadmintonCompetitie.model.Team;
 import nl.competitie.badminton.BadmintonCompetitie.model.Competition;
-import nl.competitie.badminton.BadmintonCompetitie.repository.ClubRepository;
+import nl.competitie.badminton.BadmintonCompetitie.repository.TeamRepository;
 import nl.competitie.badminton.BadmintonCompetitie.repository.CompetitionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +24,7 @@ public class CompetitionController {
     CompetitionRepository competitionRepository;
 
     @Autowired
-    ClubRepository clubRepository;
+    TeamRepository teamRepository;
 
     @GetMapping({"/", "/competition"})
     protected String showCompetition(Model model) {
@@ -59,29 +59,29 @@ public class CompetitionController {
         }
     }
 
-    @GetMapping("/addCompetitionClub/{competitionId}")
-    protected String addClub(@PathVariable("competitionId") Integer competitionId, Model model) {
-        model.addAttribute("clubs", clubRepository.findAll());
+    @GetMapping("/addCompetitionTeam/{competitionId}")
+    protected String addTeam(@PathVariable("competitionId") Integer competitionId, Model model) {
+        model.addAttribute("teams", teamRepository.findAll());
         model.addAttribute("competition", competitionRepository.findById(competitionId));
-        return "addCompetitionClub";
+        return "addCompetitionTeam";
     }
 
-    @GetMapping("/competition/{competitionId}/clubs")
-    protected String competitionAddClub(@PathVariable("competitionId") Integer competitionId,
-                                        @RequestParam Integer clubId, Model model) {
-        Optional<Club> club = clubRepository.findById(clubId);
+    @GetMapping("/competition/{competitionId}/teams")
+    protected String competitionAddTeam(@PathVariable("competitionId") Integer competitionId,
+                                        @RequestParam Integer teamId, Model model) {
+        Optional<Team> team = teamRepository.findById(teamId);
         Optional<Competition> competition = competitionRepository.findById(competitionId);
 
         if (competition.isPresent()) {
-            if (!competition.get().hasClub(club.get())) {
-                competition.get().getClubs().add(club.get());
-            }
-            competitionRepository.save(competition.get());
-            model.addAttribute("competition", competitionRepository.findById(competitionId));
-            model.addAttribute("clubs", clubRepository.findAll());
-            return "redirect:/competition";
-        }
+            if (!competition.get().hasTeam(team.get())) {
+                competition.get().getTeams().add(team.get());
 
+                competitionRepository.save(competition.get());
+                model.addAttribute("competition", competitionRepository.findById(competitionId));
+                model.addAttribute("teams", teamRepository.findAll());
+                return "redirect:/competition";
+            }
+        }
         return "redirect:/competition";
     }
 

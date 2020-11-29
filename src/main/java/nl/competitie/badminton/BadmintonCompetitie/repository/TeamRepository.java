@@ -1,6 +1,6 @@
 package nl.competitie.badminton.BadmintonCompetitie.repository;
 
-import nl.competitie.badminton.BadmintonCompetitie.model.Club;
+import nl.competitie.badminton.BadmintonCompetitie.model.Team;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * Haalt clubs uit de database en schrijft clubs naar de database
  */
-public interface ClubRepository extends JpaRepository<Club, Integer> {
+public interface TeamRepository extends JpaRepository<Team, Integer> {
 }

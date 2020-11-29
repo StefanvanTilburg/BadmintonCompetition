@@ -3,15 +3,13 @@ package nl.competitie.badminton.BadmintonCompetitie.model;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * @author Stefan van Tilburg <s.g.van.tilburg@st.hanze.nl>
  *
  * Representatie van een competitie
  *
- * TODO : - The CascadeType.All removes all competitions when I remove 1 competition. Because all clubs get deleted,
+ * TODO : - The CascadeType.All removes all competitions when I remove 1 competition. Because all teams get deleted,
  *          it cascades back I presumme. Look up possibilities.
  */
 @Entity
@@ -26,10 +24,10 @@ public class Competition {
     private String competitionName;
 
     @ManyToMany(cascade = CascadeType.MERGE)
-    @JoinTable(name = "competition_club",
+    @JoinTable(name = "competition_team",
             joinColumns = @JoinColumn(name = "competition_Id", referencedColumnName = "competitionId"),
-            inverseJoinColumns = @JoinColumn(name = "club_Id", referencedColumnName = "clubId"))
-    private Set<Club> clubs = new HashSet<>();
+            inverseJoinColumns = @JoinColumn(name = "team_Id", referencedColumnName = "teamId"))
+    private Set<Team> teams = new HashSet<>();
 
     public Competition() {
         this(DEFAULT_COMPETITION);
@@ -55,28 +53,28 @@ public class Competition {
         this.competitionName = competitionName;
     }
 
-    public Set<Club> getClubs() {
-        return clubs;
+    public Set<Team> getTeams() {
+        return teams;
     }
 
-    public void setClubs(Set<Club> clubs) {
-        this.clubs = clubs;
+    public void setTeams(Set<Team> teams) {
+        this.teams = teams;
     }
 
     // TODO Create view for this function
-    public void addClub(Club club) {
-        this.clubs.add(club);
-        //club.getCompetitions().add(this);
+    public void addTeam(Team team) {
+        this.teams.add(team);
+        //team.getCompetitions().add(this);
     }
 
-    public void removeClub(Club club) {
-        this.clubs.remove(club);
-        //club.getCompetitions().remove(club);
+    public void removeTeam(Team team) {
+        this.teams.remove(team);
+        //team.getCompetitions().remove(team);
     }
 
-    public boolean hasClub(Club club) {
-        for (Club competitionClub: getClubs()) {
-            if (competitionClub.getClubId() == club.getClubId()) {
+    public boolean hasTeam(Team team) {
+        for (Team competitionTeam : getTeams()) {
+            if (competitionTeam.getTeamId() == team.getTeamId()) {
                 return true;
             }
         }

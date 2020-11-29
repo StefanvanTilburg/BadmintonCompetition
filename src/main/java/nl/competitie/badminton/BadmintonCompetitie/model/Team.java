@@ -10,41 +10,41 @@ import java.util.Set;
  * Representatie van een competitie
  */
 @Entity
-public class Club {
+public class Team {
 
-    public static final String DEFAULT_CLUB = "DEFAULT CLUB";
+    public static final String DEFAULT_TEAM = "DEFAULT TEAM";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer clubId;
+    private Integer teamId;
 
-    private String clubName;
+    private String teamName;
 
-    @ManyToMany(mappedBy = "clubs")
+    @ManyToMany(mappedBy = "teams")
     private Set<Competition> competitions = new HashSet<>();
 
-    public Club() {
-        this(DEFAULT_CLUB);
+    public Team() {
+        this(DEFAULT_TEAM);
     }
 
-    public Club(String clubName) {
-        this.clubName = clubName;
+    public Team(String teamName) {
+        this.teamName = teamName;
     }
 
-    public Integer getClubId() {
-        return clubId;
+    public Integer getTeamId() {
+        return teamId;
     }
 
-    public void setClubId(Integer clubId) {
-        this.clubId = clubId;
+    public void setTeamId(Integer clubId) {
+        this.teamId = clubId;
     }
 
-    public String getClubName() {
-        return clubName;
+    public String getTeamName() {
+        return teamName;
     }
 
-    public void setClubName(String clubName) {
-        this.clubName = clubName;
+    public void setTeamName(String clubName) {
+        this.teamName = clubName;
     }
 
     public Set<Competition> getCompetitions() {
