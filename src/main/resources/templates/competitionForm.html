@@ -2,9 +2,8 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <div th:replace="fragments/meta.html :: metaInfo"/>
     <title>Creëer competities</title>
-    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css} "/>
 </head>
 <body>
     <div th:replace="fragments/navigation.html :: topNavigation(~{ :: .myLocation})">

@@ -7,14 +7,42 @@
 </head>
 <body>
     <div th:fragment="topNavigation(currenlocation)" class="navcontainer">
-        <div class="nav-item navtitle">Badminton Competition Application</div>
-        <div class="nav-item navlocation" th:insert="${currenlocation}">Location... this html is not going to be seen</div>
-        <div class="nav-item"><a th:href="@{/competition}">Home</a></div>
-        <div sec:authorize="hasRole('ADMIN')" class="nav-item">
-            <a sec:authorize="hasRole('ADMIN')" th:href="@{/user/new}">Gebruiker toevoegen</a>
-        </div>
-        <div class="nav-item"><a th:href="@{/competition/add}">Competitie toevoegen in applicatie</a></div>
-        <div class="nav-item"><a th:href="@{/club}">Club toevoegen in applicatie</a></div>
-        <div clase="nav-item"><a th:href="@{/logout}">Uitloggen</a></div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" th:href="@{/competition}">Badminton Competitie</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/competition}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Toevoegen...
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" th:href="@{/competition/add}">Competitie toevoegen</a>
+                            <a class="dropdown-item" th:href="@{/club}">Club toevoegen</a>
+                            <div class="dropdown-divider"></div>
+                            <a sec:authorize="hasRole('ADMIN')"
+                               class="dropdown-item" th:href="@{/user/new}">Gebruiker toevoegen</a>
+                            <a class="dropdown-item" th:href="@{/logout}">Uitloggen</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled navlocation" href="#" tabindex="-1" aria-disabled="true"
+                           th:insert="${currenlocation}">Location... </a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
     </div>
 </body>

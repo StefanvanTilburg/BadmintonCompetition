@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <div th:replace="fragments/meta.html :: metaInfo"/>
     <title>Voeg club aan competitie toe</title>
-    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css} "/>
 </head>
 <body>
     <div th:replace="fragments/navigation.html :: topNavigation(~{ :: .myLocation})">
